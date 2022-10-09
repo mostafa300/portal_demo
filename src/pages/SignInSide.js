@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,14 +12,17 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import wisys from '../wisys.png'
+// import wisys from '../wisys.png';
+import './SignInSide.css';
+
+import { useHistory } from 'react-router-dom';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      <label className="PortalName">NEC Portal Demo</label>
+      {' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -32,6 +35,9 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+  const history = useHistory();
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,6 +45,9 @@ export default function SignInSide() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    //here to validate and route to other page
+    history.push('/profile');
   };
 
 
