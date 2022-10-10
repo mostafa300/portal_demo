@@ -79,7 +79,7 @@ const LoginOne = () => {
   };
 
   return (
-    <MDBContainer className="my-5">
+    <MDBContainer className="my-5" >
 
       <MDBCard>
         <form onSubmit={submitHandler}>
