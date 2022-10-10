@@ -14,10 +14,13 @@ import {
   MDBInput
 }
   from 'mdb-react-ui-kit';
-const LoginOne = () => {
+const LoginOne = (props) => {
 
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
+  const [empName, setEmpName] = useState('tata');
+  const [pernr, setPernr] = useState('20160433');
+
   //const navigate = useNavigate();
   const history = useHistory();
 
@@ -30,6 +33,7 @@ const LoginOne = () => {
     setEnteredPassword(event.target.value);
   };
 
+  // Login Function
   const submitHandler = (event) => {
     event.preventDefault();
     const obj = {
@@ -75,6 +79,8 @@ const LoginOne = () => {
     //     console.error('There was an error!', error);
     //   });
     //navigate('/profile');
+
+    props.onLogin("Tata" , "20160433333");
     history.push('/profilepage');
   };
 
