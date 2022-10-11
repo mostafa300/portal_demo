@@ -20,6 +20,7 @@ const LoginOne = (props) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [empName, setEmpName] = useState('tata');
   const [pernr, setPernr] = useState('20160433');
+  const [emp, setEmp] = useState('');
 
   //const navigate = useNavigate();
   const history = useHistory();
@@ -37,65 +38,53 @@ const LoginOne = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const obj = {
-      Email: enteredEmail,
-      Pasword: enteredPassword
+      I_PERNR : enteredEmail,
+      // Pasword: enteredPassword
     };
 
     const bodyRequest1 = {
-      Type: 'login',
-      Return: {},
-      Employee: obj
+      ZNEC_EMPL_PROFILE: obj
     };
-
-    const bodyRequest2 = {
-      d: bodyRequest1
-    };
-
-    console.log("submit login", bodyRequest2);
-
+    const body = JSON.stringify(bodyRequest1);
     const headers = {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-      'Authorization': 'Basic SVdNT1VTVEFGQTpNb3N0YWZhQDEyMw==',
+      'Authorization': 'Basic UzAwMjM4MjE5OTk6V2VsY29tZUAxMjM0NQ==',
       // 'x-csrf-token': 'Fetch',
-      // 'Content-Type': 'application/json',
-      'x-csrf-token': '71NA7hTbTvBI5XG7q9c89g==',
-      'Accept': 'application/json'
+      'Content-Type': 'application/json',
+      // 'Accept': 'application/json'
     };
 
-    console.log(JSON.stringify(bodyRequest2));
+    console.log(body);
     // axios
-    // axios.post('http://vhnrads4ap01.sap.nec.gov.sa:8000/sap/opu/odata/sap/zemp_demo_srv/OperationSet', JSON.stringify(bodyRequest2), { headers })
-    //   .then(response => console.log(response))
-    //   .catch(error => {
-    //     // this.setState({ errorMessage: error.message });
-    //     console.error('There was an error!', error);
-    //   });
-    // console.log(headers)
-    // axios.get('http://vhnrads4ap01.sap.nec.gov.sa:8000/sap/opu/odata/sap/zemp_demo_srv', { headers })
-    //   .then(response => console.log(response))
-    //   .catch(error => {
-    //     // this.setState({ errorMessage: error.message });
-    //     console.error('There was an error!', error);
-    //   });
+    axios.post('https://e650123-iflmap.hcisbt.sa1.hana.ondemand.com/http/EmpProfile', body , { headers })
+      .then(response => {
+        console.log(response.data.R_EMP_DATA);
+        setEmp(response.data.R_EMP_DATA);
+        props.onLogin(response.data.R_EMP_DATA);
+        history.push('/profilepage');
+      })
+      .catch(error => {
+        // this.setState({ errorMessage: error.message });
+        console.error('There was an error!', error);
+      });
+
     //navigate('/profile');
 
-    props.onLogin("Tata" , "20160433333");
-    history.push('/profilepage');
   };
 
   return (
     <MDBContainer className="my-5" >
 
-      <MDBCard>
+      <MDBCard className='col-6'>
         <form onSubmit={submitHandler}>
           <MDBRow className='g-0'>
 
-            <MDBCol md='6'>
+            {/* <MDBCol md='6'>
               <MDBCardImage src={process.env.PUBLIC_URL + "wisys.png"} alt="login form" className='rounded-start w-100' />
-            </MDBCol>
+            </MDBCol> */}
 
-            <MDBCol md='6'>
+            <MDBCol >
               <MDBCardBody className='d-flex flex-column'>
 
                 <div className='d-flex flex-row mt-2'>
@@ -105,7 +94,7 @@ const LoginOne = (props) => {
 
                 <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Sign into your account</h5>
 
-                <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg" onChange={emailChangeHandler} />
+                <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='text' size="lg" onChange={emailChangeHandler} />
                 <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg" onChange={passwordChangeHandler} />
 
                 <MDBBtn className="mb-4 px-5" color='dark' size='lg'>Login</MDBBtn>

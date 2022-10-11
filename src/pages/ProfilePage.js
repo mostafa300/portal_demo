@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React, { useState } from 'react'
 import {
     MDBCol,
     MDBContainer,
@@ -26,8 +26,9 @@ const ProfilePage = (props) => {
 
     const [empName, setEmpName] = useState('');
     const [pernr, setPernr] = useState('');
+    const [emp, setEmp] = useState('');
 
-
+    console.log("Hello from Profile page Imp is :", props.emp);
     return (
         <section style={{ backgroundColor: '#eee' }}>
             <MDBContainer className="py-5">
@@ -55,9 +56,9 @@ const ProfilePage = (props) => {
                                     className="rounded-circle"
                                     style={{ width: '150px' }}
                                     fluid />
-                                <p className="text-muted mb-1">Mustafa Mahmoud</p>
-                                <p className="text-muted mb-1">ABAP / Fiori Developer </p>
-                                <p className="text-muted mb-4"> {props.pernr} </p>
+                                <p className="text-muted mb-1"> {props.emp.EMPNAME} </p>
+                                <p className="text-muted mb-1">{props.emp.EMPPOS_TXT} </p>
+                                <p className="text-muted mb-4"> {props.emp.EMPNO} </p>
                                 <div className="d-flex justify-content-center mb-2">
                                     <MDBBtn>Edit Profile Picture</MDBBtn>
                                     {/* <MDBBtn outline className="ms-1">Message</MDBBtn> */}
@@ -105,7 +106,7 @@ const ProfilePage = (props) => {
                                         <MDBCardText>Full Name</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">Mustafa Mahmoud Farg</MDBCardText>
+                                        <MDBCardText className="text-muted">{props.emp.EMPNAME}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
@@ -114,16 +115,35 @@ const ProfilePage = (props) => {
                                         <MDBCardText>Email</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">mfergany@wisys.com.sa</MDBCardText>
+                                        <MDBCardText className="text-muted">{props.emp.EMAIL}</MDBCardText>
+                                    </MDBCol>
+                                </MDBRow>
+                                <hr />
+
+                                <MDBRow>
+                                    <MDBCol sm="3">
+                                        <MDBCardText>Company</MDBCardText>
+                                    </MDBCol>
+                                    <MDBCol sm="9">
+                                        <MDBCardText className="text-muted">{props.emp.COMPANY_TXT}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
                                 <MDBRow>
                                     <MDBCol sm="3">
-                                        <MDBCardText>Phone</MDBCardText>
+                                        <MDBCardText>Department</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                                        <MDBCardText className="text-muted">{props.emp.DEPT_TXT}</MDBCardText>
+                                    </MDBCol>
+                                </MDBRow>
+                                <hr />
+                                <MDBRow>
+                                    <MDBCol sm="3">
+                                        <MDBCardText>Position</MDBCardText>
+                                    </MDBCol>
+                                    <MDBCol sm="9">
+                                        <MDBCardText className="text-muted">{props.emp.EMPPOS_TXT}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
@@ -132,18 +152,10 @@ const ProfilePage = (props) => {
                                         <MDBCardText>Mobile</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                                        <MDBCardText className="text-muted"></MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
-                                <MDBRow>
-                                    <MDBCol sm="3">
-                                        <MDBCardText>Address</MDBCardText>
-                                    </MDBCol>
-                                    <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
-                                    </MDBCol>
-                                </MDBRow>
                             </MDBCardBody>
                         </MDBCard>
 

@@ -15,17 +15,16 @@ const App = () => {
 
   const [empName, setEmpName] = useState('');
   const [pernr, setPernr] = useState('');
+  const [emp, setEmp] = useState('');
 
-  const setEmployee = (empName , pernr ) => {
-    setEmpName(empName);
-    setPernr(pernr);
-    console.log("App.js name: ",empName);
-    console.log("App.js Pernr: ",pernr);
+  const setEmployee = ( emp ) => {
+    setEmp(emp);
+    console.log("App.js emp: ",emp);
   };
 
 
   return (
-    <div>
+    <div >
       <Switch>
         <Route path="/" exact>
           <Redirect to="/login" />
@@ -35,14 +34,14 @@ const App = () => {
         </Route>
         {/* mostafa profile */}
         <Route path="/profilepage">
-          <ProfilePage empName={empName} pernr={pernr}/>
+          <ProfilePage emp={emp}/>
         </Route>
         <Route path="/login">
           <LoginOne onLogin={setEmployee} />
         </Route>
-        <Route path="*">
+        {/* <Route path="*">
           <NotFound />
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );
