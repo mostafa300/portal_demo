@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ProfilePage from './ProfilePage';
 import axios from "axios";
-import { Link, Routes, Route , useHistory } from 'react-router-dom';
+import { Link, Routes, Route, useHistory } from 'react-router-dom';
 import {
   MDBBtn,
   MDBContainer,
@@ -38,7 +38,7 @@ const LoginOne = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const obj = {
-      I_PERNR : enteredEmail,
+      I_PERNR: enteredEmail,
       // Pasword: enteredPassword
     };
 
@@ -47,17 +47,19 @@ const LoginOne = (props) => {
     };
     const body = JSON.stringify(bodyRequest1);
     const headers = {
-      // 'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+      'Access-Control-Allow-Methods' : 'DELETE, POST, GET, OPTIONS',
       'Authorization': 'Basic UzAwMjM4MjE5OTk6V2VsY29tZUAxMjM0NQ==',
       // 'x-csrf-token': 'Fetch',
       'Content-Type': 'application/json',
-      // 'Accept': 'application/json'
+      'Accept': 'application/json',
+      // 'Cookie' : 'JSESSIONID=3A2CAED78B147ECE81454EC158AE29AD69926DEFA108343E6E61CDB4C4E19777; JTENANTSESSIONID_tpq91ak6l9=cmqjjasqgaaIPt51BLYl6qEux%2BRcb42BlhdVWTgCPfo%3D; BIGipServere650123iflmapavtsa1cpie.factorysa1.customdomain=!B8ui+z0hdaMJ3nzpzM6k/4QNSP4dJ2d8UDR50triOjc6Bxzhir2ItXIE3d1EKb9Yt9myfMb7FqTeu58='
     };
 
     console.log(body);
     // axios
-    axios.post('https://e650123-iflmap.hcisbt.sa1.hana.ondemand.com/http/EmpProfile', body , { headers })
+    axios.post('https://e650123-iflmap.hcisbt.sa1.hana.ondemand.com/http/EmpProfile', body, { headers })
       .then(response => {
         console.log(response.data.R_EMP_DATA);
         setEmp(response.data.R_EMP_DATA);

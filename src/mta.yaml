@@ -1,0 +1,21 @@
+_schema-version: "2.0.0"
+ID: NEO3
+version: 0.0.1  
+parameters:
+  hcp-deployer-version: '1.1.0'
+  before-all:
+  - buildpack: nodejs_buildpack
+    tasks: 
+      - name: task-abc-1
+        commands: nmp install  
+
+modules:
+  - name: my_node-02
+    type: javascript.nodejs
+    path: ./
+    parameters:
+      buildpack: nodejs_buildpack
+      meomory: 512M
+      tasks: 
+        - name: task-abc-2
+          commands: nmp install

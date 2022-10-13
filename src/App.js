@@ -27,7 +27,7 @@ const App = () => {
     <div >
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/login" />
+        <LoginOne onLogin={setEmployee} />
         </Route>
         <Route path="/profile">
           <Profile />
@@ -36,9 +36,9 @@ const App = () => {
         <Route path="/profilepage">
           <ProfilePage emp={emp}/>
         </Route>
-        <Route path="/login">
+        {/* <Route path="/login">
           <LoginOne onLogin={setEmployee} />
-        </Route>
+        </Route> */}
         {/* <Route path="*">
           <NotFound />
         </Route> */}

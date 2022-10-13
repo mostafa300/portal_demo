@@ -112,6 +112,15 @@ const ProfilePage = (props) => {
                                 <hr />
                                 <MDBRow>
                                     <MDBCol sm="3">
+                                        <MDBCardText>Date of birth</MDBCardText>
+                                    </MDBCol>
+                                    <MDBCol sm="9">
+                                        <MDBCardText className="text-muted">{props.emp.DATE_OF_BIRTH}</MDBCardText>
+                                    </MDBCol>
+                                </MDBRow>
+                                <hr />
+                                <MDBRow>
+                                    <MDBCol sm="3">
                                         <MDBCardText>Email</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
@@ -152,7 +161,25 @@ const ProfilePage = (props) => {
                                         <MDBCardText>Mobile</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted"></MDBCardText>
+                                        <MDBCardText className="text-muted">{props.emp.MOBILE_NUMBER}</MDBCardText>
+                                    </MDBCol>
+                                </MDBRow>
+                                <hr />
+                                <MDBRow>
+                                    <MDBCol sm="3">
+                                        <MDBCardText>Marital Status</MDBCardText>
+                                    </MDBCol>
+                                    <MDBCol sm="9">
+                                        <MDBCardText className="text-muted">{props.emp.MARITAL_STATUS}</MDBCardText>
+                                    </MDBCol>
+                                </MDBRow>
+                                <hr />
+                                <MDBRow>
+                                    <MDBCol sm="3">
+                                        <MDBCardText>Joining date</MDBCardText>
+                                    </MDBCol>
+                                    <MDBCol sm="9">
+                                        <MDBCardText className="text-muted">{props.emp.JOINING_DATE}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
