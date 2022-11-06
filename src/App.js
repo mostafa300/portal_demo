@@ -10,6 +10,7 @@ import SignInSide from './pages/SignInSide';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import LoginOne from './pages/LoginOne';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Home from './pages/Home';
 
 const App = () => {
 
@@ -17,9 +18,9 @@ const App = () => {
   const [pernr, setPernr] = useState('');
   const [emp, setEmp] = useState('');
 
-  const setEmployee = ( emp ) => {
+  const setEmployee = (emp) => {
     setEmp(emp);
-    console.log("App.js emp: ",emp);
+    console.log("App.js emp: ", emp);
   };
 
 
@@ -27,18 +28,19 @@ const App = () => {
     <div >
       <Switch>
         <Route path="/" exact>
-        <LoginOne onLogin={setEmployee} />
+          {/* <LoginOne onLogin={setEmployee} /> */}
+          <Home />
         </Route>
         <Route path="/profile">
           <Profile />
         </Route>
         {/* mostafa profile */}
         <Route path="/profilepage">
-          <ProfilePage emp={emp}/>
+          <ProfilePage emp={emp} />
         </Route>
-        {/* <Route path="/login">
+        <Route path="/login">
           <LoginOne onLogin={setEmployee} />
-        </Route> */}
+        </Route>
         {/* <Route path="*">
           <NotFound />
         </Route> */}
